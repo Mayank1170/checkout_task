@@ -1,0 +1,61 @@
+.Container {
+ @apply w-full relative;
+ min-height: 0px;  
+}
+
+.Header {
+  @apply relative flex flex-col gap-y-1;
+}
+  
+.Icon {
+  @apply right-0 w-4 h-4 text-white duration-300 transform ;
+}
+
+.Trigger[data-state="open"] .Icon {
+  @apply rotate-180;
+}
+
+.Trigger {
+  @apply relative flex justify-between w-full;
+}
+
+.Trigger span {
+  @apply text-xs text-white text-opacity-40 font-bold;
+}
+
+.Content {
+  @apply relative py-3 overflow-hidden w-full flex flex-row justify-evenly;
+}
+
+.Content[data-state="open"] {
+  animation: openContent 300ms ease-out;
+}
+
+.Content[data-state="closed"] {
+  animation: closedContent 300ms ease-out;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes openContent {
+  from {
+    height: 0
+  }
+  to {
+    height: var(--radix-accordion-content-height)
+  }
+}
+
+@keyframes closedContent {
+  from {
+    height: var(--radix-accordion-content-height)
+  }
+  to {
+    height: 0
+  }
+}
